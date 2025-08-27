@@ -1,20 +1,17 @@
-name: Validação HTML
+name: CI/CD Site HTML
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  validate-html:
+  validate:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout do código
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Validação do HTML
+      - name: Run HTML5 Validator
         uses: Cyb3r-Jak3/html5validator-action@v0.4.4
         with:
           root: .
@@ -30,4 +27,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
-         
